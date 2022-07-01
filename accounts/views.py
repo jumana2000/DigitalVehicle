@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 import random
 import string
 
+
 def randomString(stringlength=6):
     letters = string.ascii_letters
     return ''.join(random.choice(letters) for i in range(stringlength))
@@ -100,6 +101,8 @@ def userlogin(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
+            request.session['username_u'] = username
+            request.session['password_u'] = password
             messages.success(request, 'You are now logged in')
             return redirect('index')
         else:
@@ -108,9 +111,9 @@ def userlogin(request):
     else:
         return render(request, 'login.html')
 
-@login_required
 def userlogout(request):
-    if request.method == 'POST':
-        logout(request)
-        messages.success(request, "you are now logged out")
-        return redirect('index')
+    del request.session['username_u']
+    del request.session['password_u']
+    logout(request)
+    messages.success(request, "you are now logged out")
+    return redirect('index')

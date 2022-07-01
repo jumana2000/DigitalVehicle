@@ -71,7 +71,10 @@
         <div class="navbar-nav ms-auto py-3 py-lg-0">
           <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
           <a href="{% url 'about' %}" class="nav-item nav-link">About Us</a>
-          <!-- <a href="service.html" class="nav-item nav-link">Our Services</a> -->
+          {% if 'username_u' in request.session %}
+          <a href="" class="nav-item nav-link">Welcome , {{request.session.username_u}}</a>
+          <a href="{% url 'userlogout' %}" class="nav-item nav-link">Logout</a>
+          {% else %}
           <div class="nav-item dropdown">
             <a
               href="#"
@@ -80,12 +83,14 @@
               >Login</a
             >
             <div class="dropdown-menu bg-light m-0">
-              <a href="{}" class="dropdown-item">User</a>
+              <a href="{% url 'login' %}" class="dropdown-item">User</a>
               <a href="" class="dropdown-item">Insurance</a>
               <a href="team.html" class="dropdown-item">Pollution</a>
             </div>
           </div>
-        
+          {% endif %}
+
+       
         </div>
       </div>
     </nav>
