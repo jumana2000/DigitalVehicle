@@ -5,9 +5,9 @@ from Insurance.models import *
 # Create your views here.
 
 def police_index(request):
-    return render(request,'police_index.html')
-
-
+    result = RC_Details.objects.all()
+    dl = License_Details.objects.all()
+    return render(request,'police_index.html',{'data':result,'dl':dl})
 
 def view_rc(request):
     data = RC_Details.objects.all()

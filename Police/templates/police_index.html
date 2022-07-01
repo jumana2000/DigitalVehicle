@@ -205,6 +205,44 @@
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
             </ol>
           </div>
+          
+          <div class="row mb-3">
+            <div class="col-xl-6 col-md-6 mb-4">
+              <form method="post" action="{% url 'search_rc_detail' %}" class="navbar-search">
+                {% csrf_token %}
+                <div class="input-group">
+      
+                  <input type="text" name="r_no" list="ddlcomplete" class="form-control bg-light border-1 small" placeholder="Search RC Details"
+                  style="border-color: #3f51b5;">
+                  
+                    <datalist id="ddlcomplete">
+                      {% for result in data %}
+                      <option>{{result.registration_no}}</option>
+                      {% endfor %}
+                    </datalist>
+  
+                </div>
+              </form>
+            </div>
+  
+            <div class="col-xl-6 col-md-6 mb-4">
+              <form method="post" action="{% url 'search_dl_details' %}" class="navbar-search">
+                {% csrf_token %}
+                <div class="input-group">
+      
+                  <input type="text" name="l_no" list="dlcomplete" class="form-control bg-light border-1 small" placeholder="Search DL Details"
+                  style="border-color: #3f51b5;">
+                  
+                    <datalist id="dlcomplete">
+                      {% for i in dl %}
+                      <option>{{i.dl_no}}</option>
+                      {% endfor %}
+                    </datalist>
+  
+                </div>
+              </form>
+            </div>
+          </div>
 
           <div class="row mb-3">
             <!-- Earnings (Monthly) Card Example -->
