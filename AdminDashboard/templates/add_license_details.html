@@ -1,0 +1,87 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+
+<!-- Container Fluid-->
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Add DL Details</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Home</a></li>
+            <li class="breadcrumb-item">DL Details</li>
+            <li class="breadcrumb-item active" aria-current="page">Add DL Details</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Form Basic -->
+            <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Add DL Details</h6>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'dl_details' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Holder Name</label>
+                                    <input type="text" name="holder_name" class="form-control" placeholder="Enter holder Name">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Driving License No</label>
+                                    <input type="text" name="dl_no" class="form-control" placeholder="DL No">
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">License_authority_Code</label>
+                                    <input type="text" name="authority_code" class="form-control" placeholder="License_authority_Code">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">License_authority</label>
+                                    <input type="text" name="license_authority" class="form-control" placeholder="License_authority">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Vehicle Class</label>
+                                    <input type="text" name="vehicle_class" class="form-control" placeholder="Vehicle Class">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Issue Date</label>
+                                    <input type="date" name="issue_date" class="form-control" placeholder="Fitness Upto">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Licence Validity</label>
+                                    <input type="date" name="licence_validity" class="form-control" placeholder="Licence Validity">
+                                </div>
+                            </div>
+
+                        </div>
+                       
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Row-->
+
+
+    </div>
+    <!---Container Fluid-->
+
+    {% endblock %}

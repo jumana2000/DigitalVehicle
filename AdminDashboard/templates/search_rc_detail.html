@@ -1,0 +1,115 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+{% for i in data %}
+        <!-- Container Fluid -->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">{{i.registration_no}}</h1>
+          </div>
+
+          <!-- row -->
+          <div class="row">
+          
+            <div class="col-lg-6">
+              <!-- Sizing Buttons -->
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Ownership Details</h6>
+                </div>
+                <div class="card-body">
+                    <h6 class="m-0 text-primary">Ownership Name</h6> 
+                    <p>{{i.owner_name}}</p>
+                    <h6 class="m-0 text-primary">Registered RTO</h6> 
+                    <p>{{i.registered_rto}}</p>
+                </div>
+              </div>
+              <!-- Brand Buttons -->
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Vehicle Details</h6>  
+                </div>
+                <div class="card-body">
+                  <h6 class="m-0 text-primary">Maker Model</h6>
+                  <p>{{i.maker_model}}</p>
+                  <h6 class="m-0 text-primary">Vehicle Class</h6>
+                  <p>{{i.vehicle_class}}</p>
+                  <h6 class="m-0 text-primary">Fuel Norms</h6>
+                  <p>{{i.fuel_norms}}</p>
+                  <h6 class="m-0 text-primary">Engine No</h6>
+                  <p>{{i.engine_no}}</p>
+                  <h6 class="m-0 text-primary">Chassis No</h6>
+                  <p>{{i.chassis_no}}</p>
+                </div>
+              </div>
+            </div>
+            <!-- Split Buttons with Icon -->
+            <div class="col-lg-6">
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Important Dates</h6>
+                </div>
+                <div class="card-body">
+                    <h6 class="m-0 text-primary">Registration Date</h6>
+                    <p>{{i.registration_date}}</p>
+                    <h6 class="m- text-primary">Fitness Upto</h6>
+                    <p>{{i.fitness_upto}}</p>
+                    <h6 class="m-0 text-primary">Insurance Expiry</h6>
+                    <p>{{i.insurance_expiry}}</p>
+                    <h6 class="m-0 text-primary">Insurance Expiry In</h6>
+                    <p>{{i.insurance_expiry_in}}</p>
+                </div>
+              </div>
+              <!-- Disabled Buttons -->
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Other Info</h6>
+                </div>
+                <div class="card-body">
+                  <h6 class="m-0 text-primary">Registration no</h6>
+                  <p>{{i.registration_no}}</p>
+                  <h6 class="m-0 text-primary">Color</h6>
+                  <p>{{i.color}}</p>
+                  <h6 class="m-0 text-primary">Unloaded Weight</h6>
+                  <p>{{i.unloaded_weight}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Row -->
+          <!-- Documentations Link -->
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <p>For more documentations you can visit<a href="https://getbootstrap.com/docs/4.3/components/buttons/"
+                  target="_blank">
+                  bootstrap buttons documentations.</a></p>
+            </div>
+          </div>
+
+          <!-- Modal Logout -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                  <a href="{% url 'adlogout' %}" class="btn btn-primary">Logout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <!-- Container Fluid -->
+
+{% endfor %}
+   
+{% endblock %}

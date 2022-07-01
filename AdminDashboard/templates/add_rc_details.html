@@ -1,0 +1,136 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+
+<!-- Container Fluid-->
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Add RC Details</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Home</a></li>
+            <li class="breadcrumb-item">RC Details</li>
+            <li class="breadcrumb-item active" aria-current="page">Add RC Details</li>
+        </ol>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Form Basic -->
+            <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Add RC Details</h6>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'rc_detail' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Owner Name</label>
+                                    <input type="text" name="owner_name" class="form-control" placeholder="Enter owner name">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Registered RTO</label>
+                                    <input type="text" name="reg_rto" class="form-control" placeholder="Registered RTO">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Maker MODEL</label>
+                                    <input type="text" name="maker_model" class="form-control" placeholder="Maker MODEL">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Vehicle Class</label>
+                                    <input type="text" name="vehicle_class" class="form-control" placeholder="Vehicle Class">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Fuel Norms</label>
+                                    <input type="text" name="fuel_norms" class="form-control" placeholder="Fuel Norms">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Engine No</label>
+                                    <input type="text" name="engine_no" class="form-control" placeholder="Engine No">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Chassis No</label>
+                                    <input type="text" name="chassis_no" class="form-control" placeholder="Classic No">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Registration Date</label>
+                                    <input type="date" name="reg_date" class="form-control" placeholder="Registration Date">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Fitness Upto</label>
+                                    <input type="date" name="fitness_upto" class="form-control" placeholder="Fitness Upto">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Insurance Expiry</label>
+                                    <input type="date" name="insurance_expiry" class="form-control" placeholder="Insurance Expiry">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Insurance Expiring in</label>
+                                    <input type="date" name="insurance_expiry_in" class="form-control" placeholder="Insurance Expiring in">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Registration No</label>
+                                    <input type="text" name="reg_no" class="form-control" placeholder="Registration No">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Color</label>
+                                    <input type="text" name="color" class="form-control" placeholder="Color">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Unloaded Weight</label>
+                                    <input type="text" name="unloaded_weight" class="form-control" placeholder="Unloaded Weight">
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Row-->
+
+
+    </div>
+    <!---Container Fluid-->
+
+    {% endblock %}

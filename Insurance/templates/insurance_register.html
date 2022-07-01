@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% block content %}
+
+    <!-- Page Header Start -->
+    <div
+      class="container-fluid page-header py-5 mb-5 wow fadeIn"
+      data-wow-delay="0.1s"
+    >
+      <div class="container text-center py-5">
+        <h1 class="display-4 text-white animated slideInDown mb-4">
+          Register
+        </h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+          <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item">
+              <a class="text-white" href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="text-white" href="#">Insurance</a>
+            </li>
+            <li class="breadcrumb-item text-primary active" aria-current="page">
+                Register
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Appointment Start -->
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="border-start border-5 border-primary ps-4 mb-5">
+              <h6 class="text-body text-uppercase mb-2">Insurance</h6>
+              <h6 class="mb-0">
+                A Company Involved In Service And Maintenance
+              </h6>
+            </div>
+          
+          </div>
+          <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <form action="{% url 'i_register' %}" method="post">
+                {% csrf_token %}
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control bg-light border-0"
+                      id="gname"
+                      placeholder="Email" name="email"
+                    />
+                    <label for="gname">Email</label>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-floating">
+                      <input
+                        type="password"
+                        class="form-control bg-light border-0"
+                        id="cage"
+                        placeholder="Password" name="password"
+                      />
+                      <label for="cage">Password</label>
+                    </div>
+                  </div>
+              
+                <h6>Already have account? <a href="{% url 'insurance_login' %}">Login</a></h6>
+                <div class="col-12">
+                  <button class="btn btn-primary w-100 py-3" type="submit">
+                    Submit
+                  </button>
+                </div>
+           
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Appointment End -->
+
+  
+{% endblock %}

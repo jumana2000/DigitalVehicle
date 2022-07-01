@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'Core',
     'accounts',
     'WebApp',
+    'AdminDashboard',
+    'Insurance',
+    'Police'
 ]
 
 MIDDLEWARE = [
