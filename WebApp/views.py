@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from AdminDashboard.models import *
 
 # Create your views here.
@@ -14,3 +14,9 @@ def search_rc(request):
         rc = request.POST.get('rc')
         data = RC_Details.objects.filter(registration_no=rc)
     return render(request,'search_rc.html',{'data':data})
+
+def search_dl(request):
+    if request.method == "POST":
+        dl = request.POST.get('dl')
+        data = License_Details.objects.filter(dl_no=dl)
+    return render(request,'search_dl.html',{'data':data})

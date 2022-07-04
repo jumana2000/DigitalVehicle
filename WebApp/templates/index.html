@@ -196,7 +196,8 @@
                 <div class="row g-3">
                   <div class="col-sm-12">
                     <div class="form-floating">
-                      <form action="" method="post">
+                      <form action="{% url 'search_dl' %}" method="post">
+                        {% csrf_token %}
                       <input type="text" name="dl" class="form-control bg-light" placeholder="Enter DL number">
                       <button class="btn btn-primary w-100 py-3" type="submit">
                         Search
