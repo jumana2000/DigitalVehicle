@@ -82,6 +82,7 @@
             >
             <div class="dropdown-menu bg-light m-0">
               <a href="{% url 'my_rc_dashboard' %}" class="dropdown-item">RC Dashboard</a>
+              <a href="{% url 'my_dl_dashboard' %}" class="dropdown-item">DL Dashboard</a>
               <a href="{% url 'userlogout' %}" class="dropdown-item">Logout</a>
             </div>
           </div>
@@ -98,7 +99,7 @@
 <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;">
     <div class="container text-center py-5">
       <h1 class="display-4 text-white  slideInDown mb-4">
-        Search RC
+        My RC Dashboard
       </h1>
       <nav aria-label="breadcrumb animated slideInDown">
         <ol class="breadcrumb justify-content-center mb-0">
@@ -109,7 +110,7 @@
             <a class="text-white" href="#">Pages</a>
           </li>
           <li class="breadcrumb-item text-primary active" aria-current="page">
-            Search RC
+           My RC Dashboard
           </li>
         </ol>
       </nav>
@@ -123,30 +124,25 @@
 
         <div class="col-lg-6">
          
-          <h1 class="mb-4">{{i.registration_no}}</h1>
-          <p class="mb-4">Owner Name : {{i.owner_name}}</p>
-          <p class="mb-4">Registered RTO : {{i.registered_rto}}</p>
-          <p class="mb-4">Maker Model : {{i.maker_model}}</p>
-          <p class="mb-4">Vehicle Class : {{i.vehicle_class}}</p>
-          <p class="mb-4">Fuel Norms : {{i.fuel_norms}}</p>
+          <h1 class="mb-4">{{i.rid.registration_no}}</h1>
+          <p class="mb-4">Owner Name : {{i.rid.owner_name}}</p>
+          <p class="mb-4">Registered RTO : {{i.rid.registered_rto}}</p>
+          <p class="mb-4">Maker Model : {{i.rid.maker_model}}</p>
+          <p class="mb-4">Vehicle Class : {{i.rid.vehicle_class}}</p>
+          <p class="mb-4">Fuel Norms : {{i.rid.fuel_norms}}</p>
         </div>
 
         <div class="col-lg-6">  
-            <p class="mb-4">Registration date : {{i.registration_date}}</p>
-            <p class="mb-4">Fitness Upto : {{i.fitness_upto}}</p>
-            <p class="mb-4">Insurance Exp  : {{i.insurance_expiry}}</p>
-            <p class="mb-4">Insurance Exp in : {{i.insurance_expiry_in}}</p>
-            <p class="mb-4">Registration Number : {{i.registration_no}}</p>
-            <p class="mb-4">Color : {{i.color}}</p>
-            <p class="mb-4">Unloaded Weight : {{i.unloaded_weight}}</p>
-           </div>
-           <form action="{% url 'check_rc' %}" method="post">
-            {% csrf_token %}
-            <input type="hidden" value="{{i.id}}" name="rid">
-            <input type="submit" value="Add To Dashboard" class="btn btn-primary py-3 px-5">
-           </form>
-           
-           </div>
+            <p class="mb-4">Registration date : {{i.rid.registration_date}}</p>
+            <p class="mb-4">Fitness Upto : {{i.rid.fitness_upto}}</p>
+            <p class="mb-4">Insurance Exp  : {{i.rid.insurance_expiry}}</p>
+            <p class="mb-4">Insurance Exp in : {{i.rid.insurance_expiry_in}}</p>
+            <p class="mb-4">Registration Number : {{i.rid.registration_no}}</p>
+            <p class="mb-4">Color : {{i.rid.color}}</p>
+            <p class="mb-4">Unloaded Weight : {{i.rid.unloaded_weight}}</p>
+        </div>
+        
+        </div>
     </div>
   </div>
 

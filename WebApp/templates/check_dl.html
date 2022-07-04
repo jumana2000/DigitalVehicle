@@ -1,9 +1,10 @@
-{% extends 'index.html' %}
+{% extends 'search_rc.html' %}
 {% block content %}
+
 <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;">
     <div class="container text-center py-5">
       <h1 class="display-4 text-white  slideInDown mb-4">
-        Search DL
+        Search RC
       </h1>
       <nav aria-label="breadcrumb animated slideInDown">
         <ol class="breadcrumb justify-content-center mb-0">
@@ -14,34 +15,34 @@
             <a class="text-white" href="#">Pages</a>
           </li>
           <li class="breadcrumb-item text-primary active" aria-current="page">
-            Search DL
+            Search RC
           </li>
         </ol>
       </nav>
     </div>
   </div>
 
-  {% for i in data %}
   <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <h1 class="display-1">{{i.dl_no}}</h1>
-          <p class="mb-4">Holder Name : {{i.holder_name}}</p>
-          <p class="mb-4">Authority Code : {{i.authority_code}}</p>
-          <p class="mb-4">License Authority : {{i.license_authority}}</p>
-          <p class="mb-4">Vehicle Class : {{i.vehicle_class}}</p>
-          <p class="mb-4">Issue Date : {{i.issue_date}}</p>
-          <p class="mb-4">License Validity : {{i.licence_validity}}</p>
-          <form action="{% url 'check_dl' %}" method="post">
-            {% csrf_token %}
-            <input type="hidden" value="{{i.id}}" name="dlid">
-            <input type="submit" value="Add To Dashboard" class="btn btn-primary py-3 px-5">
-           </form>
-          </div>
-      </div>
+            <form action="{% url 'submit_dl' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" value="{{rid}}" name="rid">
+                <div class="form-group pt-5">
+                    <label for="exampleInputEmail1">Date Of Birth</label>
+                    <input type="date" name="dob" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Date Of Birth">
+                </div>
+                <div class="form-group pt-5">
+                   <input type="submit" value="Add" class="btn btn-primary py-3 px-5" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+            </form>       
+        </div>
+
+
+       
+        </div>
     </div>
   </div>
 
-{% endfor %}
 {% endblock %}

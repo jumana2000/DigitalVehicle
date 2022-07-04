@@ -3,7 +3,6 @@ from Core.models import User
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.core.mail import send_mail
-from django.contrib.auth.decorators import login_required
 
 import random
 import string
@@ -101,6 +100,8 @@ def userlogin(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
+            data = User.objects.filter(username=username).values('id').first()
+            request.session['id'] = data['id']
             request.session['username_u'] = username
             request.session['password_u'] = password
             messages.success(request, 'You are now logged in')
@@ -112,6 +113,7 @@ def userlogin(request):
         return render(request, 'login.html')
 
 def userlogout(request):
+    del request.session['id']
     del request.session['username_u']
     del request.session['password_u']
     logout(request)

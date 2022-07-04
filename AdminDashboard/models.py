@@ -30,4 +30,5 @@ class License_Details(models.Model):
     vehicle_class = models.CharField(max_length=20,null=True,default=False)
     issue_date = models.DateField(default=False)
     licence_validity = models.DateField(default=False)
+    dob = models.DateField(auto_now_add=True,null=True,blank=False)
 
