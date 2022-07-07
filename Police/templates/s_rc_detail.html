@@ -1,4 +1,4 @@
-{% extends 'admin_index.html' %}
+{% extends 'police_index.html' %}
 {% block content %}
 {% for i in data %}
 <!-- Container Fluid -->
@@ -7,9 +7,6 @@
   <div class="row">
     <div class="col-sm-6 d-sm-flex align-items-start justify-content-start mb-4">
       <h1 class="h3 mb-0 text-gray-800">{{i.registration_no}}</h1>
-    </div>
-    <div class="col-sm-6 d-sm-flex align-items-end justify-content-end mb-4">
-      <h1 class="h3 mb-0 text-gray-800"><button type="button" class="btn btn-outline-primary">Disciplinary Action</button></h1>
     </div>
   </div>
   
@@ -107,7 +104,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-          <a href="{% url 'adlogout' %}" class="btn btn-primary">Logout</a>
+          <a href="{% url 'p_logout' %}" class="btn btn-primary">Logout</a>
         </div>
       </div>
     </div>

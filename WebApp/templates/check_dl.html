@@ -28,7 +28,7 @@
         <div class="col-lg-6">
             <form action="{% url 'submit_dl' %}" method="post">
                 {% csrf_token %}
-                <input type="hidden" value="{{rid}}" name="rid">
+                <input type="hidden" value="{{dlid}}" name="dlid">
                 <div class="form-group pt-5">
                     <label for="exampleInputEmail1">Date Of Birth</label>
                     <input type="date" name="dob" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Date Of Birth">

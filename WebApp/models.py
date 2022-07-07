@@ -9,3 +9,8 @@ class RC_Dashboard(models.Model):
     userid = models.ForeignKey(User,on_delete=CASCADE,null=True,blank=False)
     engine_no = models.CharField(max_length=20,null=True,blank=False)
     chassis_no = models.CharField(max_length=20,null=True,blank=False)
+
+class DL(models.Model):
+    dob = models.DateField()
+    dlid = models.ForeignKey(License_Details,on_delete=CASCADE)
+    userid = models.ForeignKey(User,on_delete=CASCADE,null=True,blank=False)

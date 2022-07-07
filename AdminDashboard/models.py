@@ -1,5 +1,6 @@
 from django.db import models
-
+from Core.models import User
+from django.db.models.deletion import CASCADE
 # Create your models here.
 
 class RC_Details(models.Model):
@@ -30,5 +31,6 @@ class License_Details(models.Model):
     vehicle_class = models.CharField(max_length=20,null=True,default=False)
     issue_date = models.DateField(default=False)
     licence_validity = models.DateField(default=False)
-    dob = models.DateField(auto_now_add=True,null=True,blank=False)
+    dob = models.DateField(null=True,blank=False)
+    
 

@@ -56,7 +56,8 @@ def dl_details(request):
         vehicle_class = request.POST.get('vehicle_class')
         issue_date = request.POST.get('issue_date')
         licence_validity = request.POST.get('licence_validity')
-        data = License_Details(dl_no=dl_no,holder_name=holder_name,authority_code=authority_code,license_authority=license_authority,vehicle_class=vehicle_class,issue_date=issue_date,licence_validity=licence_validity)
+        dob = request.POST.get('dob')
+        data = License_Details(dob=dob,dl_no=dl_no,holder_name=holder_name,authority_code=authority_code,license_authority=license_authority,vehicle_class=vehicle_class,issue_date=issue_date,licence_validity=licence_validity)
         data.save()
     return redirect('view_license_details')
     

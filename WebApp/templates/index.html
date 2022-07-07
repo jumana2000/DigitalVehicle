@@ -73,7 +73,12 @@
           <a href="{% url 'about' %}" class="nav-item nav-link">About Us</a>
           {% if 'username_u' in request.session %}
           <a href="" class="nav-item nav-link">Welcome , {{request.session.username_u}}</a>
+          <a href="" class="nav-item nav-link"><i style="width: 15px; height: 15px" class="fa fa-bell"></i><sup><span>3</span></sup></a>
          
+          {% for i in data %}
+          <a href="" class="nav-item nav-link">Licence Expiring Today</a>
+          {% endfor %}
+          
           <div class="nav-item dropdown">
             <a
               href="#"
@@ -83,9 +88,11 @@
             >
             <div class="dropdown-menu bg-light m-0">
               <a href="{% url 'my_rc_dashboard' %}" class="dropdown-item">RC Dashboard</a>
+              <a href="{% url 'my_dl_dashboard' %}" class="dropdown-item">DL Dashboard</a>
               <a href="{% url 'userlogout' %}" class="dropdown-item">Logout</a>
             </div>
           </div>
+
           {% else %}
           <div class="nav-item dropdown">
             <a

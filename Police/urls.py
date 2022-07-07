@@ -10,5 +10,9 @@ urlpatterns = [
     path('p_logout',views.p_logout,name='p_logout'),
     path('view_rc',views.view_rc,name='view_rc'),
     path('view_dl',views.view_dl,name='view_dl'),
-    path('view_insurance',views.view_insurance,name='view_insurance')
+    path('s_rc_detail',views.s_rc_detail,name='s_rc_detail'),
+    path('s_dl_details',views.s_dl_details,name='s_dl_details'),
+    path('view_insurance',views.view_insurance,name='view_insurance'),
+    path('disciplinary_action',views.disciplinary_action,name='disciplinary_action'),
+    path('d_action',views.d_action,name='d_action')
 ]

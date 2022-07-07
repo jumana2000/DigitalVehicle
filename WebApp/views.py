@@ -1,12 +1,33 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from AdminDashboard.models import *
-from django.contrib import messages
 from . models import *
+from Police.models import *
+from datetime import datetime
+import functools
+ 
+
+# printing original tuple
+print("The original tuple : " + str(test_tuple))
+
+# Convert Tuple to integer
+# Using reduce() + lambda
+res = functools.reduce(lambda sub, ele: sub * 10 + ele, test_tuple)
+
+# printing result
+print("Tuple to integer conversion : " + str(res))
+
 # Create your views here.
 
 def index(request):
-    return render(request,'index.html')
+    now = datetime.now() # current date and time
+    date = now.strftime("%Y-%m-%d")
+    license_expiry =  License_Details.objects.filter(licence_validity=date).values_list('id')
+    print(license_expiry)
+   
+    userid = request.session.get('id')
+    DL.objects.filter(dlid=license_expiry,userid=userid)
+    return render(request,'index.html',{'license_expiry':license_expiry})
 
 def about(request):
     return render(request,'about.html')
@@ -23,9 +44,13 @@ def search_dl(request):
         data = License_Details.objects.filter(dl_no=dl)
     return render(request,'search_dl.html',{'data':data})
     
-
 def my_dl_dashboard(request):
-    pass
+    username = request.session.get('id')
+    data = DL.objects.filter(userid=username)
+    dlid = DL.objects.filter(userid=username).values('dlid')[0]['dlid']
+    print(dlid)
+    disc_action = Dis_Action.objects.filter(dlid=dlid)
+    return render(request,'my_dl_dashboard.html',{'data':data,'disc_action':disc_action})
 
 def my_rc_dashboard(request):
     username = request.session.get('id')
@@ -56,8 +81,20 @@ def submit_rc(request):
 def check_dl(request):
     if request.method == "POST":
         dlid = request.POST.get('dlid')
-        print(dlid)
     return render(request,"check_dl.html",{'dlid':dlid})
 
 def submit_dl(request):
-    pass
+    if request.method == "POST":
+        username = request.session.get('username_u')
+        
+        dlid = request.POST.get('dlid')
+        
+        dob = request.POST.get('dob')
+        
+        if License_Details.objects.filter(dob=dob,id=dlid).exists():
+            data = DL(dob=dob,dlid=License_Details.objects.get(id=dlid),userid=User.objects.get(username=username))
+            data.save()
+            return redirect('my_dl_dashboard')
+        else:
+            return HttpResponse("Failed")
+  

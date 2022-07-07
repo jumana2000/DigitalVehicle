@@ -1,7 +1,10 @@
+from turtle import end_fill
+from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from . models import *
 from AdminDashboard.models import *
 from Insurance.models import *
+
 # Create your views here.
 
 def police_index(request):
@@ -16,6 +19,32 @@ def view_rc(request):
 def view_dl(request):
     data = License_Details.objects.all()
     return render(request,'view_dl.html',{'data':data})
+
+def s_rc_detail(request):
+    if request.method == "POST":
+        r_no = request.POST.get('r_no')
+        rc = RC_Details.objects.filter(registration_no=r_no)
+    return render(request,'s_rc_detail.html',{'data':rc})
+
+def s_dl_details(request):
+    if request.method == "POST":
+        l_no = request.POST.get('l_no')
+        dl = License_Details.objects.filter(dl_no=l_no)
+    return render(request,'s_dl_details.html',{'data':dl})
+
+def d_action(request):
+    if request.method == "POST":
+        dl_id =request.POST.get('id')
+    return render(request,'disciplinary_action.html',{'dl_id':dl_id})
+
+def disciplinary_action(request):
+    if request.method == "POST":
+        reason = request.POST.get('reason')
+        amount = request.POST.get('amount')
+        id = request.POST.get('id')
+        data = Dis_Action(reason=reason,amount=amount,dlid=License_Details.objects.get(id=id))
+        data.save()
+    return HttpResponse("Punishment Update")
 
 def view_insurance(request):
     data = Insurance_DB.objects.all()
