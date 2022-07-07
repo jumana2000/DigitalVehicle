@@ -7,15 +7,6 @@ from datetime import datetime
 import functools
  
 
-# printing original tuple
-print("The original tuple : " + str(test_tuple))
-
-# Convert Tuple to integer
-# Using reduce() + lambda
-res = functools.reduce(lambda sub, ele: sub * 10 + ele, test_tuple)
-
-# printing result
-print("Tuple to integer conversion : " + str(res))
 
 # Create your views here.
 
@@ -23,11 +14,20 @@ def index(request):
     now = datetime.now() # current date and time
     date = now.strftime("%Y-%m-%d")
     license_expiry =  License_Details.objects.filter(licence_validity=date).values_list('id')
+    data = license_expiry[0]
     print(license_expiry)
-   
+    print(data)
+    print("The original tuple : " + str(data))
+    # Convert Tuple to integer
+    # Using reduce() + lambda
+    res = functools.reduce(lambda sub, ele: sub * 10 + ele, data)
+    print("Tuple to integer conversion : " + str(res))
+    le = str(res)
     userid = request.session.get('id')
-    DL.objects.filter(dlid=license_expiry,userid=userid)
-    return render(request,'index.html',{'license_expiry':license_expiry})
+    result = DL.objects.filter(dlid=le,userid=userid)
+    lcount = DL.objects.filter(dlid=le,userid=userid).count()
+    print(result)
+    return render(request,'index.html',{'result':result,'lcount':lcount})
 
 def about(request):
     return render(request,'about.html')
@@ -49,7 +49,7 @@ def my_dl_dashboard(request):
     data = DL.objects.filter(userid=username)
     dlid = DL.objects.filter(userid=username).values('dlid')[0]['dlid']
     print(dlid)
-    disc_action = Dis_Action.objects.filter(dlid=dlid)
+    disc_action = Dis_Action.objects.filter(dlid=dlid,status=0)
     return render(request,'my_dl_dashboard.html',{'data':data,'disc_action':disc_action})
 
 def my_rc_dashboard(request):

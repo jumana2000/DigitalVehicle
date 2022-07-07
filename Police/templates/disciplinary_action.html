@@ -41,12 +41,43 @@
                        
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+
                 </div>
             </div>
         </div>
         <!--Row-->
 
-
+    {% if data %}
+    <div class="col-lg-12">
+             
+        <div class="card mb-4">
+            <div class="card-body">   
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Dl No</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Paid</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                <tr>
+                    <th scope="row">{{i.dlid.dl_no}}</th>
+                    <td>{{i.reason}}</td>
+                    <td>{{i.amount}}</td>
+                    <td><a href="{% url 'fine_status' id=i.id %}"><button class="btn btn-primary">Paid</button></a></td>
+                </tr>
+                {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>
+            </div>
+    </div>
+    {% endif %}    
+    </div>
     </div>
     <!---Container Fluid-->
 

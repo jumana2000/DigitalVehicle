@@ -33,18 +33,23 @@ def s_dl_details(request):
     return render(request,'s_dl_details.html',{'data':dl})
 
 def d_action(request):
-    if request.method == "POST":
-        dl_id =request.POST.get('id')
-    return render(request,'disciplinary_action.html',{'dl_id':dl_id})
+    dl_id =request.POST.get('id')
+    data = Dis_Action.objects.filter(dlid=dl_id,status=0)
+    return render(request,'disciplinary_action.html',{'dl_id':dl_id,'data':data})
 
 def disciplinary_action(request):
     if request.method == "POST":
         reason = request.POST.get('reason')
         amount = request.POST.get('amount')
         id = request.POST.get('id')
-        data = Dis_Action(reason=reason,amount=amount,dlid=License_Details.objects.get(id=id))
+        data = Dis_Action(reason=reason,amount=amount,dlid=License_Details.objects.get(id=id),status=0)
         data.save()
     return HttpResponse("Punishment Update")
+
+def fine_status(request,id):
+    Dis_Action.objects.filter(id=id).update(status=1)
+    return redirect('d_action')
+
 
 def view_insurance(request):
     data = Insurance_DB.objects.all()

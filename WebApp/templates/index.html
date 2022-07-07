@@ -7,7 +7,16 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
-
+    <link rel="stylesheet" href="{% static 'insurance/styles.css' %}">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(".notification_icon .fa-bell").click(function(){
+          $(".dropdown").toggleClass("active");
+        })
+      });
+    </script>
     <!-- Favicon -->
     <link href="{% static 'insurance/img/favicon.ico' %}" rel="icon" />
 
@@ -71,14 +80,26 @@
         <div class="navbar-nav ms-auto py-3 py-lg-0">
           <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
           <a href="{% url 'about' %}" class="nav-item nav-link">About Us</a>
+       
           {% if 'username_u' in request.session %}
           <a href="" class="nav-item nav-link">Welcome , {{request.session.username_u}}</a>
-          <a href="" class="nav-item nav-link"><i style="width: 15px; height: 15px" class="fa fa-bell"></i><sup><span>3</span></sup></a>
-         
-          {% for i in data %}
-          <a href="" class="nav-item nav-link">Licence Expiring Today</a>
-          {% endfor %}
           
+          <li class="nav-item dropdown show">
+            <a class="nav-item nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
+              <i class="far fa-bell"></i><sup><span>{{lcount}}</span></sup>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right show" style="left: inherit; right: 0px;">
+              <span class="dropdown-item dropdown-header">{{lcount}} Notifications</span>
+              <!-- for loop -->
+              {% if result %}
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">Licence Expiring Today</a>
+              {% else %}
+              <a href="#" class="dropdown-item">No Notification</a>
+              {% endif %}
+              
+            </div>
+          </li>
           <div class="nav-item dropdown">
             <a
               href="#"
@@ -92,7 +113,7 @@
               <a href="{% url 'userlogout' %}" class="dropdown-item">Logout</a>
             </div>
           </div>
-
+ 
           {% else %}
           <div class="nav-item dropdown">
             <a

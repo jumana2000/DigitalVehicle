@@ -12,5 +12,6 @@ class Police(models.Model):
 
 class Dis_Action(models.Model):
     reason = models.TextField(max_length=200)
-    amount = models.IntegerField()
+    amount = models.IntegerField(default=0)
     dlid = models.ForeignKey(License_Details,on_delete=CASCADE)
+    status = models.IntegerField(default=0)
