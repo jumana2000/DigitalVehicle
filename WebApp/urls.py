@@ -11,5 +11,7 @@ urlpatterns = [
     path('check_rc',views.check_rc,name='check_rc'),
     path('check_dl',views.check_dl,name='check_dl'),
     path('submit_rc',views.submit_rc,name='submit_rc'),
-    path('submit_dl',views.submit_dl,name='submit_dl')
+    path('submit_dl',views.submit_dl,name='submit_dl'),
+    path('report',views.report,name='report'),
+    path('report_data',views.report_data,name='report_data')
 ]

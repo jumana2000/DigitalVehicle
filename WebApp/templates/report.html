@@ -1,0 +1,217 @@
+{% extends 'index.html' %}
+{% block content %}
+
+    <!-- Page Header Start -->
+    <div
+      class="container-fluid page-header py-5 mb-5 wow fadeIn"
+      data-wow-delay="0.1s"
+    >
+      <div class="container text-center py-5">
+        <h1 class="display-4 text-white animated slideInDown mb-4">
+          Report your Complaints
+        </h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+          <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item">
+              <a class="text-white" href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="text-white" href="#">Report</a>
+            </li>
+            <li class="breadcrumb-item text-primary active" aria-current="page">
+                Report your Complaints
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Appointment Start -->
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="border-start border-5 border-primary ps-4 mb-5">
+              <h6 class="text-body text-uppercase mb-2">Report</h6>
+              <h1 class="display-6 mb-0">
+                A Company Involved In Service And Maintenance
+              </h1>
+            </div>
+            <p class="mb-0">
+              Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu
+              diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet
+              lorem sit clita duo justo magna dolore erat amet
+            </p>
+          </div>
+          <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <form action="{% url 'report_data' %}" method="post">
+                {% csrf_token %}
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="form-floating">
+                    <input
+                      type="date"
+                      class="form-control bg-light border-0"
+                      id="gname"
+                      placeholder="DATE REPORTED" name="date_reported"
+                    />
+                    <label for="gname">DATE REPORTED</label>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control bg-light border-0"
+                        id="cage"
+                        placeholder="BODY STYLE" name="body_style"
+                      />
+                      <label for="cage">BODY STYLE</label>
+                    </div>
+                  </div>
+                <div class="col-sm-6">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control bg-light border-0"
+                      id="gmail"
+                      placeholder="Color" name="color"
+                    />
+                    <label for="gmail">Color</label>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control bg-light border-0"
+                      id="cname"
+                      placeholder="MARKER PLATE NUMBER" name="marker_plate_no"
+                    />
+                    <label for="cname">MARKER PLATE NUMBER</label>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                      <label for="cname">VEHICLE REGISTERED?</label>
+                      <input
+                        type="checkbox"
+                        value="True" name="vehicle_registered"
+                      /><label>YES</label>
+                      <input
+                        type="checkbox"
+                        value="False" name="vehicle_registered"
+                      /><label>NO</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control bg-light border-0"
+                        id="cname" name="vehicle_register_state"
+                      />
+                      <label for="cname">IF YES, IN WHAT STATE?</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="cname">DOOR LOCKED?</label>
+                    <input
+                        type="checkbox" value="True" name="door_locked"
+                      /><label>YES</label>
+                      <input
+                        type="checkbox"
+                        value="False" name="door_locked"
+                      /><label>NO</label>
+                   
+                  </div>
+                  <div class="col-sm-6">
+                    
+                        <label for="cname">KEYS IN VEHICLE?</label>
+                        <input
+                        type="checkbox"
+                        value="True" name="keys_in_vehicle"
+                      /><label>YES</label>
+                      <input
+                        type="checkbox"
+                        value="False" name="keys_in_vehicle"
+                      /><label>NO</label>
+                    
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-floating">
+                      <input
+                        type="text" placeholder="OWNER NAME"
+                        class="form-control bg-light border-0"
+                        id="cname" name="owner_name"
+                      />
+                      <label for="cname">NAME OF OWNER</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-floating">
+                      <input
+                        type="text" placeholder="ADDRESS"
+                        class="form-control bg-light border-0"
+                        id="cname" name="address"
+                      />
+                      <label for="cname">ADDRESS</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <label for="cname">WILL OWNER OR PERSON IN CUSTODY OF VEHICLE BE AVAILABLE FOR COURT? </label>
+                    <br>
+                        <input
+                        type="checkbox"
+                        value="True" name="court_available"
+                      /><label>YES</label>
+                      <input
+                        type="checkbox"
+                        value="False" name="court_available"
+                      /><label>NO</label>
+                      </div>
+                 
+                  <div class="col-sm-6">
+                    <div class="form-floating">
+                      <input
+                        type="date" placeholder="DATE VEHICLE STOLEN"
+                        class="form-control bg-light border-0"
+                        id="cname" name="date_of_stolen"
+                      />
+                      <label for="cname">DATE VEHICLE STOLEN</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-floating">
+                      <input
+                        type="time" placeholder="TIME"
+                        class="form-control bg-light border-0"
+                        id="cname" name="time"
+                      />
+                      <label for="cname">TIME</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-floating">
+                      <input
+                        type="text" placeholder="LOCATION STOLEN FROM "
+                        class="form-control bg-light border-0"
+                        id="cname" name="location_from"
+                      />
+                      <label for="cname">LOCATION STOLEN FROM </label>
+                    </div>
+                  </div>
+                <div class="col-12">
+                  <button class="btn btn-primary w-100 py-3" type="submit">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Appointment End -->
+
+  
+{% endblock %}

@@ -4,7 +4,7 @@ from django.shortcuts import render,redirect
 from . models import *
 from AdminDashboard.models import *
 from Insurance.models import *
-
+from WebApp.models import *
 # Create your views here.
 
 def police_index(request):
@@ -54,6 +54,10 @@ def fine_status(request,id):
 def view_insurance(request):
     data = Insurance_DB.objects.all()
     return render(request,'view_insurance.html',{'data':data})
+
+def complaints(request):
+    data = Complaint.objects.all()
+    return render(request,'complaints.html',{'data':data})
 
 def police_register(request):
     return render(request,'police_register.html')

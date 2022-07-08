@@ -15,5 +15,6 @@ urlpatterns = [
     path('view_insurance',views.view_insurance,name='view_insurance'),
     path('disciplinary_action',views.disciplinary_action,name='disciplinary_action'),
     path('d_action',views.d_action,name='d_action'),
-    path('fine_status/<int:id>/',views.fine_status,name='fine_status')
+    path('fine_status/<int:id>/',views.fine_status,name='fine_status'),
+    path('complaints',views.complaints,name='complaints')
 ]

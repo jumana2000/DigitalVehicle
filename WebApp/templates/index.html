@@ -86,16 +86,18 @@
           
           <li class="nav-item dropdown show">
             <a class="nav-item nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
-              <i class="far fa-bell"></i><sup><span>{{lcount}}</span></sup>
+              <i class="far fa-bell"></i><sup><span>{{count}}</span></sup>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right show" style="left: inherit; right: 0px;">
-              <span class="dropdown-item dropdown-header">{{lcount}} Notifications</span>
+              <span class="dropdown-item dropdown-header">{{count}} Notifications</span>
               <!-- for loop -->
               {% if result %}
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item">Licence Expiring Today</a>
-              {% else %}
-              <a href="#" class="dropdown-item">No Notification</a>
+              {% endif %}
+              {% if result1 %}
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">Insurance Expiring Today</a>
               {% endif %}
               
             </div>
@@ -110,6 +112,7 @@
             <div class="dropdown-menu bg-light m-0">
               <a href="{% url 'my_rc_dashboard' %}" class="dropdown-item">RC Dashboard</a>
               <a href="{% url 'my_dl_dashboard' %}" class="dropdown-item">DL Dashboard</a>
+              <a href="{% url 'report' %}" class="dropdown-item">Complaints</a>
               <a href="{% url 'userlogout' %}" class="dropdown-item">Logout</a>
             </div>
           </div>

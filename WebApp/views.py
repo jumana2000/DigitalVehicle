@@ -1,13 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from AdminDashboard.models import *
+from Insurance.models import Insurance_DB
 from . models import *
 from Police.models import *
 from datetime import datetime
 import functools
  
-
-
 # Create your views here.
 
 def index(request):
@@ -27,7 +26,24 @@ def index(request):
     result = DL.objects.filter(dlid=le,userid=userid)
     lcount = DL.objects.filter(dlid=le,userid=userid).count()
     print(result)
-    return render(request,'index.html',{'result':result,'lcount':lcount})
+    
+    a = RC_Dashboard.objects.filter(userid=userid)
+    print(a.values())
+
+    if 'id' in request.session:
+        for i in a:
+            x = i.rid.insurance_expiry
+    else:
+        return render(request,'index.html')
+    
+    result1 = RC_Details.objects.filter(insurance_expiry=x)
+    icount = RC_Details.objects.filter(insurance_expiry=x).count()
+    # count = int(lcount)+int(icount)
+    # print("Count : "+count)
+    count = lcount+icount
+    print(count)
+    context = {'result1':result1,'result':result,'count':count}
+    return render(request,'index.html',context)
 
 def about(request):
     return render(request,'about.html')
@@ -98,3 +114,35 @@ def submit_dl(request):
         else:
             return HttpResponse("Failed")
   
+def report(request):
+    return render(request,'report.html')
+
+def report_data(request):
+    if request.method == "POST":
+        date_reported = request.POST.get('date_reported')
+        body_style = request.POST.get('body_style')
+        color = request.POST.get('color')
+        marker_plate_no = request.POST.get('marker_plate_no')
+        vehicle_registered = request.POST.get('vehicle_registered')
+        vehicle_register_state = request.POST.get('vehicle_register_state')
+        door_locked = request.POST.get('door_locked')
+        keys_in_vehicle = request.POST.get('keys_in_vehicle')
+        # name_of_insurance_company = request.POST.get('name_of_insurance_company')
+        owner_name = request.POST.get('owner_name')
+        # phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        court_available = request.POST.get('court_available')
+        date_of_stolen = request.POST.get('date_of_stolen')
+        time = request.POST.get('time')
+        location_from = request.POST.get('location_from')
+        data = Complaint(date_reported=date_reported,body_style=body_style,
+        color=color,marker_plate_no=marker_plate_no,vehicle_registered=vehicle_registered,
+        vehicle_register_state=vehicle_register_state,
+        vehicle_identification_no=0,
+        door_locked=door_locked,keys_in_vehicle=keys_in_vehicle,
+        name_of_insurance_company='abc',
+        owner_name=owner_name,phone=1234,address=address,
+        court_available=court_available,date_of_stolen=date_of_stolen,
+        time=time,location_from=location_from)
+        data.save()
+    return redirect('index')

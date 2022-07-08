@@ -1,0 +1,100 @@
+{% extends 'police_index.html' %}
+{% block content %}
+
+
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Public Complaints</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              <li class="breadcrumb-item">Public Complaints</li>
+              <li class="breadcrumb-item active" aria-current="page">View Public Complaints</li>
+            </ol>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 mb-4">
+              <!-- Simple Tables -->
+              <div class="card">
+               
+                <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>DATE REPORTED</th>
+                        <th>BODY STYLE</th>
+                        <th>Color</th>
+                        <th>MARKER PLATE NUMBER</th>
+                        <th>VEHICLE REGISTERED</th>
+                        <th>STATE</th>
+                        <th>DOOR LOCKED</th>
+                        <th>KEYS IN VEHICLE</th>
+                        <th>OWNER NAME</th>
+                        <th>ADDRESS</th>
+                        <th>Court AVAILABLE</th>
+                        <th>STOLEN DATE</th>
+                        <th>TIME</th>
+                        <th>STOLEN LOCATION</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                      <tr>
+                        <td>{{i.date_reported}}</td>
+                        <td>{{i.body_style}}</td>
+                        <td>{{i.color}}</td>
+                        <td>{{i.marker_plate_no}}</td>
+                        <td>{{i.vehicle_registered}}</td>
+                        <td>{{i.vehicle_register_state}}</td>
+                        <td>{{i.door_locked}}</td>
+                        <td>{{i.keys_in_vehicle}}</td>
+                        <td>{{i.owner_name}}</td>
+                        <td>{{i.address}}</td>
+                        <td>{{i.court_available}}</td>
+                        <td>{{i.date_of_stolen}}</td>
+                        <td>{{i.time}}</td>
+                        <td>{{i.location_from}}</td>
+                        
+                        <td><span class="btn btn-sm btn-primary">Edit</span></td>
+                        <td><a href="#" class="btn btn-sm btn-danger">Delete</a></td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <div class="card-footer"></div>
+              </div>
+            </div>
+          </div>
+          <!--Row-->
+
+          <!-- Modal Logout -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                  <a href="{% url 'adlogout' %}" class="btn btn-primary">Logout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!---Container Fluid-->
+  
+
+{% endblock %}
